@@ -205,12 +205,14 @@ contract("SupplyChain", function (accounts) {
       var aliceBalanceBefore = await web3.eth.getBalance(alice);
       var bobBalanceBefore = await web3.eth.getBalance(bob);
 
-      await instance.buyItem(0, { from: bob, value: excessAmount });
+      await instance.buyItem(0, { from: bob, value: "1100" });
 
       var aliceBalanceAfter = await web3.eth.getBalance(alice);
       var bobBalanceAfter = await web3.eth.getBalance(bob);
 
+ 
       const result = await instance.fetchItem.call(0);
+      console.log(result);
 
       assert.equal(
         result[3].toString(10),
